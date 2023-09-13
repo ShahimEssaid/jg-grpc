@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package essaid.jg.proto.v1;
+
+option java_package = "com.essaid.jg.proto.v1";
+
+message HelloRequest {
+  string greeting = 1;
+}
+
+message HelloResponse {
+  string greeting = 1;
+}
+
+service HelloService {
+  rpc Hello(HelloRequest) returns (HelloResponse){}
+}

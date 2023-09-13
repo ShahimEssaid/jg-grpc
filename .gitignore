@@ -1,0 +1,6 @@
+.venv/
+target/
+dist/
+node_modules/
+.idea/
+/java/.mvn/wrapper/maven-wrapper.jar
