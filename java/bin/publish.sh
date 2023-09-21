@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #set -x
-#set -u
 set -e
+set -u
 set -o pipefail
 set -o noclobber
 shopt -s nullglob
@@ -17,12 +17,4 @@ DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 
 cd "$DIR"/..
 
-../bin/setup.sh
-. ../.venv/bin/activate
-
-poetry publish --build -u __token__
-
-
-
-
-
+./mvnw clean deploy

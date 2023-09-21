@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "jg-grpc"
+name = "tims-grpc"
 version = "0.0.1"
 description = ""
 authors = ["Shahim Essaid <shahim@essaid.com>"]

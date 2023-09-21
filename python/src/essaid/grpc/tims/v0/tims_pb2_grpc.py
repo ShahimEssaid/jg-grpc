@@ -2,10 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from essaid.jg.proto.v1 import hello_pb2 as essaid_dot_jg_dot_proto_dot_v1_dot_hello__pb2
+from essaid.grpc.tims.v0 import tims_pb2 as essaid_dot_grpc_dot_tims_dot_v0_dot_tims__pb2
 
 
-class HelloServiceStub(object):
+class TimsStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -14,42 +14,42 @@ class HelloServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Hello = channel.unary_unary(
-                '/essaid.jg.proto.v1.HelloService/Hello',
-                request_serializer=essaid_dot_jg_dot_proto_dot_v1_dot_hello__pb2.HelloRequest.SerializeToString,
-                response_deserializer=essaid_dot_jg_dot_proto_dot_v1_dot_hello__pb2.HelloResponse.FromString,
+        self.N3CPaths = channel.unary_stream(
+                '/essaid.grpc.tims.v0.Tims/N3CPaths',
+                request_serializer=essaid_dot_grpc_dot_tims_dot_v0_dot_tims__pb2.PathRequest.SerializeToString,
+                response_deserializer=essaid_dot_grpc_dot_tims_dot_v0_dot_tims__pb2.Path.FromString,
                 )
 
 
-class HelloServiceServicer(object):
+class TimsServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def Hello(self, request, context):
+    def N3CPaths(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_HelloServiceServicer_to_server(servicer, server):
+def add_TimsServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Hello': grpc.unary_unary_rpc_method_handler(
-                    servicer.Hello,
-                    request_deserializer=essaid_dot_jg_dot_proto_dot_v1_dot_hello__pb2.HelloRequest.FromString,
-                    response_serializer=essaid_dot_jg_dot_proto_dot_v1_dot_hello__pb2.HelloResponse.SerializeToString,
+            'N3CPaths': grpc.unary_stream_rpc_method_handler(
+                    servicer.N3CPaths,
+                    request_deserializer=essaid_dot_grpc_dot_tims_dot_v0_dot_tims__pb2.PathRequest.FromString,
+                    response_serializer=essaid_dot_grpc_dot_tims_dot_v0_dot_tims__pb2.Path.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'essaid.jg.proto.v1.HelloService', rpc_method_handlers)
+            'essaid.grpc.tims.v0.Tims', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class HelloService(object):
+class Tims(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Hello(request,
+    def N3CPaths(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class HelloService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/essaid.jg.proto.v1.HelloService/Hello',
-            essaid_dot_jg_dot_proto_dot_v1_dot_hello__pb2.HelloRequest.SerializeToString,
-            essaid_dot_jg_dot_proto_dot_v1_dot_hello__pb2.HelloResponse.FromString,
+        return grpc.experimental.unary_stream(request, target, '/essaid.grpc.tims.v0.Tims/N3CPaths',
+            essaid_dot_grpc_dot_tims_dot_v0_dot_tims__pb2.PathRequest.SerializeToString,
+            essaid_dot_grpc_dot_tims_dot_v0_dot_tims__pb2.Path.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

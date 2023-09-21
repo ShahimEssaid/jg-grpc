@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package essaid.grpc.tims.v0;
+
+option java_package = "com.essaid.grpc.tims.v0";
+option java_outer_classname = "TimsMsg";
+
+message Concept {
+  string code = 1;
+  string label = 2;
+}
+
+message PathRequest {
+  Concept from = 1;
+  Concept to = 2;
+  int32 count = 3;
+  int32 level = 4;
+}
+
+message Path {
+  repeated Concept concepts = 1;
+}
+
+service Tims {
+  rpc N3CPaths(PathRequest) returns (stream Path){}
+}
