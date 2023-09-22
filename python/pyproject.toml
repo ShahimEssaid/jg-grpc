@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tims-grpc"
-version = "0.0.1"
+version = "0.0.2"
 description = ""
 authors = ["Shahim Essaid <shahim@essaid.com>"]
 readme = "README.md"

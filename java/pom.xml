@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.essaid.poms</groupId>
+        <artifactId>com.essaid.poms.top</artifactId>
+        <version>0.0.2-SNAPSHOT</version>
+    </parent>
+
     <!-- Parent, if set, needs to be placed below the <version> tag below so the bin/ses-version.sh doesn't break. -->
 
     <groupId>com.essaid.grpc</groupId>
@@ -11,6 +17,16 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <!-- <parent>   here if needed. -->
+
+    <repositories>
+        <repository>
+            <id>oss</id>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,12 +51,10 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <!-- Java 9+ compatibility - Do NOT update to 2.0.0 -->
